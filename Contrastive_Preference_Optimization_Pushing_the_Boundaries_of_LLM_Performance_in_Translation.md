@@ -1,90 +1,84 @@
 # SUMMARY
-The authors introduce Alma models, fine-tuned with monolingual and high-quality parallel data, and propose Contrastive Preference Optimization (CPO) to enhance translation quality, achieving performance comparable to GPT-4 and WMT competition winners.
+The authors introduce Alma models, fine-tuned with monolingual and high-quality parallel data, and propose Contrastive Preference Optimization (CPO) to enhance translation quality, achieving performance levels comparable to GPT-4 and WMT competition winners.
 
 # IDEAS:
 - Alma models are fine-tuned with extensive monolingual data in various languages.
-- Smaller LLMs with 7 billion or 13 billion parameters don't perform as well as traditional translation models.
-- Alma models are further fine-tuned with high-quality parallel data to guide translation generation.
-- Contrastive Preference Optimization (CPO) addresses limitations of supervised fine-tuning (SFT).
-- CPO uses specially curated preference data to train the Alma model.
-- Alma R, the fine-tuned model using CPO, matches or surpasses GPT-4 and WMT competition winners.
-- Human-written parallel data can be lower quality than system-generated translations.
-- Training models solely to replicate reference translations may not be the most effective approach.
-- CPO offers advantages in memory efficiency, speed, and effectiveness in improving translation quality.
-- CPO breaks the bottleneck inherent in SFT's reference mimicking learning process.
-- Target references in machine translation tasks are crucial for minimizing differences between predicted outputs and gold references.
-- Reference-free evaluation frameworks can assess the quality of both gold standard references and model outputs.
-- Advanced models' translations can sometimes surpass the quality of gold standard references.
-- Fine-tuning models using superior translations as references can improve translation quality.
-- CPO resolves memory and speed inefficiencies of Direct Preference Optimization (DPO).
-- CPO facilitates preference learning with the same space and time complexity as common supervised fine-tuning methods.
-- Preference data includes triplet preferences with high-quality but not flawless translations.
-- Experiments focus on 10 translation directions using a compact training data set derived from Flores 200.
-- Alma 13B Laura model is used as the initial checkpoint for training.
-- CPO significantly enhances Alma models' capabilities, surpassing GPT-4 and WMT winners.
-- Training on metric-preferred data consistently improves performance across other metrics.
-- Using reference-free models like Kiwi XXL and XC for constructing preference data is robust and valid.
-- Ablation study shows the importance of different components of the CPO loss function.
-- Both Alma and GPT-4 contribute to improving model performance in preference data selection.
+- Smaller LLMs with 7 or 13 billion parameters underperform traditional translation models.
+- Alma models outperform previous moderate-sized LLMs and even GPT-3.5 in translation tasks.
+- CPO addresses limitations of supervised fine-tuning (SFT) by using curated preference data.
+- CPO helps the model learn to generate better translations and reject worse ones.
+- Direct Preference Optimization (DPO) requires double memory capacity and processing time.
+- CPO only requires storage and processing of one policy, improving efficiency.
+- High-quality human-written data can have quality issues affecting model performance.
+- Training models solely to replicate reference translations may not be effective.
+- Reference-free evaluation frameworks assess translation outputs without relying on gold standards.
+- Kiwi XXL and X C M are reference-free models used for evaluating translation quality.
+- CPO loss function includes preference learning and ensuring model alignment with preferred data.
+- Using both parts of the CPO loss function together gives the best performance.
+- Excluding data from either Alma or GPT-4 leads to a significant drop in performance.
+- Artificially generated dispreferred data leads to a significant drop in performance.
+- Alma R model achieves performance levels matching or surpassing GPT-4 and WMT winners.
+- Training on metric-preferred data improves performance across other metrics.
+- SFT on preferred data results in lower performance across all metrics.
+- Reference-free models like Kiwi XXL and X C M are robust for constructing preference data.
+- The quality of dispreferred data significantly impacts model performance.
+- Alma models are trained using a compact dataset derived from Flores 200 data.
+- The training setup includes a batch size of 128 and a maximum sequence length of 512 tokens.
+- Alma 13B Laura is used as the initial checkpoint for training.
+- The model is fine-tuned with a small amount of high-quality parallel data.
+- The experiments focus on 10 translation directions including Czech to English and German to English.
+- The results show significant improvements across all translation directions with CPO.
 
 # INSIGHTS:
-- Alma models leverage extensive monolingual data for enhanced multilingual comprehension.
-- Smaller LLMs struggle due to English-centric training datasets limiting linguistic diversity.
-- CPO addresses SFT's limitations by using curated preference data for training.
-- Human-written parallel data can be outperformed by system-generated translations.
-- Reference-free evaluation frameworks offer robust assessment of translation quality.
-- Advanced models can produce translations better than gold standard references.
-- CPO resolves memory and speed inefficiencies of DPO, enhancing model performance.
-- Preference learning with CPO matches the efficiency of common supervised fine-tuning methods.
-- High-quality but not flawless translations help refine model-generated translations.
-- Training on metric-preferred data improves performance across various metrics.
+- Alma models use extensive monolingual data to enhance multilingual comprehension.
+- CPO improves translation quality by learning preferences from curated data.
+- Reference-free evaluation frameworks offer robust assessment without relying on gold standards.
+- High-quality human-written data can still have quality issues affecting model performance.
+- Training models solely to replicate reference translations may not be effective.
+- CPO resolves memory and speed inefficiencies of DPO by requiring only one policy.
+- Using both parts of the CPO loss function together gives the best performance.
+- Excluding data from either Alma or GPT-4 leads to a significant drop in performance.
+- Artificially generated dispreferred data leads to a significant drop in performance.
+- Alma R model achieves performance levels matching or surpassing GPT-4 and WMT winners.
 
 # QUOTES:
-- "Smaller LLMs with 7 billion or 13 billion parameters don't perform as well as traditional translation models."
-- "Human-written parallel data can be lower quality than system-generated translations."
+- "Alma models are first fine-tuned with a large amount of monolingual data in various languages."
+- "CPO aims to address two main limitations of the previous fine-tuning method supervised fine-tuning (SFT)."
 - "Training models solely to replicate reference translations may not be the most effective approach."
-- "CPO offers advantages in memory efficiency, speed, and effectiveness in improving translation quality."
-- "Advanced models' translations can sometimes surpass the quality of gold standard references."
-- "Fine-tuning models using superior translations as references can improve translation quality."
-- "CPO resolves memory and speed inefficiencies of Direct Preference Optimization (DPO)."
-- "Preference data includes triplet preferences with high-quality but not flawless translations."
-- "Experiments focus on 10 translation directions using a compact training data set derived from Flores 200."
-- "CPO significantly enhances Alma models' capabilities, surpassing GPT-4 and WMT winners."
-- "Training on metric-preferred data consistently improves performance across other metrics."
-- "Using reference-free models like Kiwi XXL and XC for constructing preference data is robust and valid."
-- "Ablation study shows the importance of different components of the CPO loss function."
-- "Both Alma and GPT-4 contribute to improving model performance in preference data selection."
+- "Reference-free evaluation frameworks assess translation outputs without relying on gold standards."
+- "CPO only requires the storage and processing of one policy, improving efficiency."
+- "High-quality human-written data can have quality issues affecting model performance."
+- "Using both parts of the CPO loss function together gives the best performance."
+- "Excluding data from either Alma or GPT-4 leads to a significant drop in performance."
+- "Artificially generated dispreferred data leads to a significant drop in performance."
+- "Alma R model achieves performance levels matching or surpassing GPT-4 and WMT winners."
 
 # HABITS:
-- Fine-tune models with extensive monolingual data in various languages for better multilingual comprehension.
-- Use high-quality parallel data to guide translation generation effectively.
-- Address limitations of supervised fine-tuning by introducing new training methods like CPO.
-- Evaluate translation quality using reference-free evaluation frameworks for robust assessment.
-- Incorporate both human-written and system-generated translations in training datasets.
+- Fine-tuning models with extensive monolingual data in various languages enhances multilingual comprehension.
+- Using curated preference data helps improve translation quality by learning preferences.
+- Evaluating translation outputs using reference-free frameworks offers robust assessment without relying on gold standards.
+- Incorporating both parts of the CPO loss function together gives the best performance.
 
 # FACTS:
-- Smaller LLMs with 7 billion or 13 billion parameters don't perform as well as traditional translation models.
-- Human-written parallel data can be lower quality than system-generated translations.
-- Advanced models' translations can sometimes surpass the quality of gold standard references.
-- CPO resolves memory and speed inefficiencies of Direct Preference Optimization (DPO).
-- Training on metric-preferred data consistently improves performance across other metrics.
+- Alma models use extensive monolingual data to enhance multilingual comprehension.
+- Smaller LLMs with 7 or 13 billion parameters underperform traditional translation models.
+- High-quality human-written data can have quality issues affecting model performance.
+- Training models solely to replicate reference translations may not be effective.
+- Reference-free evaluation frameworks assess translation outputs without relying on gold standards.
 
 # REFERENCES:
 - Alma models
 - GPT series
-- Mistol
-- Llama
-- Falcon
-- Flores 200 dataset
+- Flores 200 data
 - Kiwi XXL
-- XC
+- X C M
+- WMT competition
 
 # ONE-SENTENCE TAKEAWAY
-Contrastive Preference Optimization (CPO) significantly enhances translation quality, surpassing traditional methods and advanced models like GPT-4.
+Contrastive Preference Optimization (CPO) significantly enhances translation quality, achieving performance levels comparable to GPT-4 and WMT competition winners.
 
 # RECOMMENDATIONS:
 - Fine-tune models with extensive monolingual data in various languages for better multilingual comprehension.
-- Use high-quality parallel data to guide translation generation effectively.
-- Address limitations of supervised fine-tuning by introducing new training methods like CPO.
-- Evaluate translation quality using reference-free evaluation frameworks for robust assessment.
-- Incorporate both human-written and system-generated translations in training datasets.
+- Use curated preference data to improve translation quality by learning preferences.
+- Evaluate translation outputs using reference-free frameworks for robust assessment without relying on gold standards.
+- Incorporate both parts of the CPO loss function together for the best performance.

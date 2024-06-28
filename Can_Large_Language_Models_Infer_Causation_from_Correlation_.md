@@ -4,97 +4,88 @@ The section introduces causal inference and its importance in reasoning. The aut
 # IDEAS:
 - Causal inference is our capacity to deduce what causes what.
 - Two methods to identify causality: experiential knowledge and formal causal reasoning.
-- Large language models (LLMs) should develop the capability to infer causation from correlation.
-- Core 2 cause is a new task designed to test LLMs' causal reasoning skills.
-- The Core 2 cause data set contains over 400,000 samples.
-- None of the 17 LLMs tested excelled in the causal inference task.
-- Fine-tuned LLMs showed better performance but lacked robust causal inference skills.
-- Directed graphical causal models (DGCMs) visualize relationships between variables.
-- DGCMs assume graphs are directed acyclic to avoid complexity.
-- D-separation helps establish conditional independence between nodes in a DAG.
-- The Markov property states each node is conditionally independent of its non-descendants given its parents.
+- Experiential knowledge involves learning from real-world experiences.
+- Formal causal reasoning uses proven procedures and rules from causal inference.
+- Correlation does not imply causation; additional variables may influence relationships.
+- Core 2 cause is a new task in NLP to infer causation from correlation.
+- Large language models (LLMs) capture statistical correlations but lack causal inference skills.
+- Core 2 cause data set tests LLMs' ability to infer causation from correlation.
+- The data set contains over 400,000 samples labeled for valid causal relationships.
+- None of the 17 LLMs tested performed well on the causal inference task.
+- Fine-tuning LLMs improved performance but did not yield robust causal inference skills.
+- Directed graphical causal models (DGCMs) visualize causal relationships among variables.
+- DGCMs use directed edges to represent causal links between variables.
+- D-separation determines conditional independence between sets of nodes in a DAG.
 - Markov equivalence class (MEC) groups DAGs that induce the same joint distribution.
-- The Peter-Clark (PC) algorithm identifies causal relationships using conditional independence and the causal Markov assumption.
-- The Core 2 cause task involves learning a function to determine the validity of correlation statements and causal hypotheses.
-- Graph isomorphism checks ensure uniqueness in generated DAGs.
-- D-separation sets are used to form statistical correlations and cluster causal graphs into MECs.
-- Six common types of causal relationships are considered in hypotheses generation.
-- Ground truth validity labels are assigned based on the necessity of hypothesized causal relations.
-- Correlations and hypotheses are verbalized into natural language statements.
-- The Core 2 cause data set includes 415,944 samples with 18.57% valid samples.
-- A diverse list of LLMs, including BERT-based and GPT-based models, were tested on the Core 2 cause data set.
-- Fine-tuned models showed significant performance improvement, with Roberta large MNLI achieving a 94.74 F1 score.
-- Robustness tests include paraphrasing hypotheses and reversing variable names.
-- Performance drops significantly under robustness tests, indicating sensitivity to language changes and variable refactorization.
-- Existing research on causal reasoning in NLP focuses on empirical knowledge, while Core 2 cause emphasizes pure causal inference skills.
-- Future research should explore larger graphs and hidden confounders in causal inference tasks.
+- Peter Clark (PC) algorithm identifies causal relationships using conditional independence and Markov assumption.
+- Core 2 cause data set construction involves generating unique DGCMs and identifying MECs.
+- The data set includes six common types of causal relationships between nodes.
+- Verbalization process translates correlations and hypotheses into natural language statements.
+- Fine-tuned models showed significant performance improvement on Core 2 cause task.
+- Roberta large MNLI achieved the highest performance with a 94.74 F1 score.
+- Robustness tests revealed sensitivity to paraphrasing and variable name changes.
+- Existing causal reasoning tasks focus on practical knowledge and logical inference.
+- Core 2 cause task emphasizes pure causal reasoning based on formal rules.
+- Future research should explore larger graphs and hidden confounders in causal inference.
 
 # INSIGHTS:
-- Causal inference is crucial for establishing accurate cause-effect relationships between variables or events.
-- Large language models need to develop robust causal reasoning skills beyond capturing statistical correlations.
-- Directed graphical causal models (DGCMs) help visualize and understand complex variable interactions.
-- D-separation is essential for determining conditional independence in directed acyclic graphs (DAGs).
-- Markov equivalence class (MEC) groups DAGs with identical statistical properties, highlighting the complexity of inferring causation from correlation.
-- The Peter-Clark (PC) algorithm efficiently identifies causal relationships using conditional independence principles.
-- Fine-tuning LLMs can improve performance in causal inference tasks but may not ensure robustness in unfamiliar scenarios.
-- Robustness tests reveal that LLMs may overfit training data rather than genuinely acquiring reasoning skills.
-- Future research should address hidden confounders and larger graphs to enhance causal inference capabilities in LLMs.
+- Causal inference is crucial for establishing accurate cause-effect relationships in reasoning.
+- Large language models excel at capturing correlations but struggle with causal inference.
+- Fine-tuning improves LLM performance but does not ensure robust causal reasoning skills.
+- Directed graphical causal models (DGCMs) effectively visualize complex variable interactions.
+- D-separation is key for determining conditional independence in directed acyclic graphs (DAGs).
+- Markov equivalence class (MEC) groups DAGs with identical statistical properties.
+- Peter Clark (PC) algorithm efficiently identifies causal relationships in data sets.
+- Core 2 cause data set provides a benchmark for evaluating LLMs' causal inference abilities.
+- Robustness tests highlight the importance of generalization in causal reasoning tasks.
 
 # QUOTES:
 - "Causal inference is our capacity to deduce what causes what."
-- "Large language models should develop the capability to infer causation from correlation."
-- "Core 2 cause is a new task designed to test LLMs' causal reasoning skills."
-- "None of the 17 LLMs tested excelled in the causal inference task."
-- "Fine-tuned LLMs showed better performance but lacked robust causal inference skills."
-- "Directed graphical causal models visualize relationships between variables."
-- "D-separation helps establish conditional independence between nodes in a DAG."
-- "The Markov property states each node is conditionally independent of its non-descendants given its parents."
+- "Correlation does not imply causation; additional variables may influence relationships."
+- "Core 2 cause is a new task in NLP to infer causation from correlation."
+- "Large language models capture statistical correlations but lack causal inference skills."
+- "None of the 17 LLMs tested performed well on the causal inference task."
+- "Fine-tuning LLMs improved performance but did not yield robust causal inference skills."
+- "Directed graphical causal models visualize causal relationships among variables."
+- "D-separation determines conditional independence between sets of nodes in a DAG."
 - "Markov equivalence class groups DAGs that induce the same joint distribution."
-- "The Peter-Clark algorithm identifies causal relationships using conditional independence and the causal Markov assumption."
-- "Graph isomorphism checks ensure uniqueness in generated DAGs."
-- "D-separation sets are used to form statistical correlations and cluster causal graphs into MECs."
-- "Six common types of causal relationships are considered in hypotheses generation."
-- "Ground truth validity labels are assigned based on the necessity of hypothesized causal relations."
-- "Correlations and hypotheses are verbalized into natural language statements."
-- "The Core 2 cause data set includes 415,944 samples with 18.57% valid samples."
-- "A diverse list of LLMs, including BERT-based and GPT-based models, were tested on the Core 2 cause data set."
-- "Fine-tuned models showed significant performance improvement, with Roberta large MNLI achieving a 94.74 F1 score."
-- "Robustness tests include paraphrasing hypotheses and reversing variable names."
-- "Performance drops significantly under robustness tests, indicating sensitivity to language changes and variable refactorization."
+- "Peter Clark algorithm identifies causal relationships using conditional independence and Markov assumption."
+- "Roberta large MNLI achieved the highest performance with a 94.74 F1 score."
+- "Robustness tests revealed sensitivity to paraphrasing and variable name changes."
+- "Existing causal reasoning tasks focus on practical knowledge and logical inference."
+- "Core 2 cause task emphasizes pure causal reasoning based on formal rules."
+- "Future research should explore larger graphs and hidden confounders in causal inference."
 
 # HABITS:
-- Regularly test models on new tasks to assess their capabilities beyond standard benchmarks.
-- Fine-tune models with specific data sets to improve their performance on targeted tasks.
-- Conduct robustness tests to ensure models' skills are not limited to training data overfitting.
-- Use directed graphical causal models (DGCMs) to visualize complex relationships between variables.
-- Apply D-separation principles to determine conditional independence in directed acyclic graphs (DAGs).
-- Utilize graph isomorphism checks to ensure uniqueness in generated graphs for data sets.
-- Generate ground truth validity labels based on the necessity of hypothesized causal relations across all graphs in a MEC.
-- Verbalize correlations and hypotheses into natural language statements for easier interpretation.
+- Regularly evaluate the performance of language models on new tasks like Core 2 cause.
+- Fine-tune language models to improve their performance on specific tasks.
+- Conduct robustness tests to assess the generalization capabilities of models.
+- Use directed graphical causal models (DGCMs) to visualize complex variable interactions.
+- Apply D-separation to determine conditional independence in directed acyclic graphs (DAGs).
+- Utilize algorithms like Peter Clark (PC) to identify causal relationships in data sets.
 
 # FACTS:
-- Causal inference allows us to deduce accurate cause-effect relationships between variables or events.
-- Large language models (LLMs) currently lack robust causal reasoning skills despite capturing statistical correlations.
-- Directed graphical causal models (DGCMs) are used to represent relationships among variables in a graph format.
-- D-separation is a key concept for establishing conditional independence between nodes in a directed acyclic graph (DAG).
-- The Markov property states that each node is conditionally independent of its non-descendants given its parents in a DAG.
-- Markov equivalence class (MEC) groups DAGs that induce the same joint distribution, highlighting the complexity of inferring causation from correlation.
-- The Peter-Clark (PC) algorithm identifies causal relationships using principles of conditional independence and the causal Markov assumption.
-- The Core 2 cause data set contains over 400,000 samples designed to test LLMs' ability to infer causation from correlation.
-- Fine-tuned LLMs showed improved performance but lacked robustness when exposed to unfamiliar scenarios or adversarial attacks.
+- Causal inference allows us to establish accurate cause-effect relationships between variables or events.
+- There are two methods to identify causality: experiential knowledge and formal causal reasoning.
+- Large language models (LLMs) capture statistical correlations but lack causal inference skills.
+- Core 2 cause data set contains over 400,000 samples labeled for valid causal relationships.
+- None of the 17 LLMs tested performed well on the Core 2 cause task.
+- Fine-tuning LLMs improved performance but did not yield robust causal inference skills.
+- Directed graphical causal models (DGCMs) visualize causal relationships among variables.
+- D-separation determines conditional independence between sets of nodes in a DAG.
+- Markov equivalence class (MEC) groups DAGs that induce the same joint distribution.
+- Peter Clark (PC) algorithm identifies causal relationships using conditional independence and Markov assumption.
 
 # REFERENCES:
 None mentioned.
 
 # ONE-SENTENCE TAKEAWAY
-Large language models need robust causal reasoning skills beyond statistical correlations for accurate cause-effect relationship inference.
+Large language models excel at capturing correlations but struggle with robust causal inference, highlighting the need for further research.
 
 # RECOMMENDATIONS:
-- Develop large language models' capability to infer causation from correlation for better reasoning skills.
-- Use directed graphical causal models (DGCMs) to visualize complex relationships between variables effectively.
-- Apply D-separation principles to determine conditional independence in directed acyclic graphs (DAGs).
-- Utilize graph isomorphism checks to ensure uniqueness in generated graphs for data sets.
-- Generate ground truth validity labels based on hypothesized causal relations across all graphs in a MEC.
-- Verbalize correlations and hypotheses into natural language statements for easier interpretation.
-- Conduct robustness tests like paraphrasing hypotheses and reversing variable names to ensure model reliability.
-- Explore larger graphs and hidden confounders in future research for enhanced causal inference capabilities.
+- Evaluate language models' performance on new tasks like Core 2 cause for better insights.
+- Fine-tune language models to improve their performance on specific tasks like Core 2 cause.
+- Conduct robustness tests to assess the generalization capabilities of language models.
+- Use directed graphical causal models (DGCMs) to visualize complex variable interactions effectively.
+- Apply D-separation to determine conditional independence in directed acyclic graphs (DAGs).
+- Utilize algorithms like Peter Clark (PC) to identify causal relationships in data sets efficiently.
