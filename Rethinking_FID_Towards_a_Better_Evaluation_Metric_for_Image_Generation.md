@@ -21,74 +21,75 @@ Researchers propose a new metric, CMMD, using CLIP embeddings and MMD distance t
 - Human evaluation showed CMMD aligns with human preference, unlike FID.
 - CMMD correctly identifies quality improvements during iterative image generation.
 - FID fails to reflect image quality degradation under complex distortions.
-- CMMD provides consistent estimates even with small image sets.
+- CMMD provides consistent estimates even with small image sets, unlike FID.
 - CMMD is faster and more practical for evaluating image generation models.
 - Calculating FID involves demanding matrix operations not suited for parallel processing.
-- MMD involves matrix multiplications, easily parallelized in deep learning libraries.
-- Researchers should reconsider using FID as the primary evaluation metric.
+- MMD involves matrix multiplications, easily parallelized and optimized in deep learning libraries.
+- Researchers should reconsider using FID as the primary evaluation metric for image quality.
 - Relying on FID could result in dismissing potentially good ideas too early.
 
 # INSIGHTS:
-- Reliable evaluation metrics are crucial for the progress of text-to-image models.
-- Human evaluation is the gold standard but impractical due to cost and scalability issues.
-- FID's assumption of normality often leads to errors in high-dimensional spaces.
-- CLIP embeddings are more suitable for diverse and complex content in generated images.
+- Human evaluation is costly and doesn't scale well, making automated metrics essential.
+- CLIP embeddings are better suited for diverse and complex content in generated images.
 - MMD is unbiased and doesn't depend on sample size, unlike FID.
 - CMMD aligns better with human perception of image quality than FID.
-- CMMD is faster and more practical for evaluating image generation models.
-- Relying on FID could lead to dismissing innovative ideas prematurely.
-- Evaluating image generation models requires assessing multiple performance aspects.
-- Human raters overwhelmingly preferred images evaluated by CMMD over FID.
+- High-dimensional covariance matrices from small samples can cause significant errors in FID.
+- CMMD uses Gaussian RBF kernel for calculating MMD distance between CLIP embeddings.
+- Human evaluation showed CMMD aligns with human preference, unlike FID.
+- CMMD correctly identifies quality improvements during iterative image generation.
+- FID fails to reflect image quality degradation under complex distortions.
+- CMMD provides consistent estimates even with small image sets, unlike FID.
 
 # QUOTES:
 - "Human evaluation remains the gold standard for text-to-image research."
-- "FID may not be the best choice for evaluating text-to-image models."
+- "FID can contradict human raters and fail to capture complex image distortions."
 - "CLIP is trained on 400 million images with corresponding text descriptions."
 - "MMD doesn't make any assumptions about the distributions."
-- "FID can contradict human raters and fail to capture complex image distortions."
-- "CMMD uses CLIP embeddings and the MMD distance."
-- "Evaluating image generation models is a complex task."
-- "Human evaluation is costly and doesn't scale well."
-- "FID's assumption of normality can lead to errors."
+- "MMD is an unbiased estimator and doesn't exhibit a strong dependency on sample size."
+- "CMMD avoids the drawbacks of FID."
+- "FID's assumption of normality can lead to errors in high-dimensional feature spaces."
+- "High-dimensional covariance matrices from small samples can cause significant errors."
+- "CMMD uses Gaussian RBF kernel for calculating MMD distance between CLIP embeddings."
+- "Human evaluation showed CMMD aligns with human preference, unlike FID."
 - "CMMD correctly identifies quality improvements during iterative image generation."
 - "FID fails to reflect image quality degradation under complex distortions."
-- "CMMD provides consistent estimates even with small image sets."
+- "CMMD provides consistent estimates even with small image sets, unlike FID."
 - "CMMD is faster and more practical for evaluating image generation models."
 - "Calculating FID involves demanding matrix operations not suited for parallel processing."
-- "MMD involves matrix multiplications, easily parallelized in deep learning libraries."
-- "Researchers should reconsider using FID as the primary evaluation metric."
+- "MMD involves matrix multiplications, easily parallelized and optimized in deep learning libraries."
+- "Researchers should reconsider using FID as the primary evaluation metric for image quality."
 - "Relying on FID could result in dismissing potentially good ideas too early."
 
 # HABITS:
-- Conducting human evaluations to align metrics with human perception of quality.
-- Using high-quality crowd computing platforms for independent evaluations.
-- Visualizing features of datasets to test assumptions about distributions.
-- Applying statistical tests to validate assumptions about data distributions.
-- Using anti-alias resizing operations to avoid negative effects on metrics.
+- Conducting human evaluations to align automated metrics with human perception.
+- Using large datasets like CLIP's 400 million images for training models.
+- Employing Gaussian RBF kernel for calculating MMD distance in evaluations.
+- Performing side-by-side evaluations with independent raters for unbiased results.
+- Utilizing high-quality crowd computing platforms for human evaluations.
 
 # FACTS:
-- CLIP is trained on 400 million images with corresponding text descriptions.
-- Inception V3 is trained on around 1 million images limited to 1,000 classes.
+- Text-to-image models need reliable evaluation metrics for continued progress.
+- Human evaluation remains the gold standard but is costly and doesn't scale well.
+- CLIP is trained on 400 million images with text descriptions, making it more suitable.
 - MMD doesn't assume distributions, unlike FID, which assumes normality.
 - MMD is an unbiased estimator and doesn't depend on sample size like FID.
-- Calculating FID involves demanding matrix operations not suited for parallel processing.
 
 # REFERENCES:
-- Inception V3 model
 - CLIP embeddings
-- Maximum Mean Discrepancy (MMD)
+- Maximum Mean Discrepancy (MMD) distance
 - Gaussian RBF kernel
+- Inception V3 model
 - COCO 30k dataset
 - Stable Diffusion 1.4 model
 - Muse model
-- Party model
+- Party prompts collection
 
 # ONE-SENTENCE TAKEAWAY
-CMMD offers a more reliable, robust, and practical alternative to FID for evaluating text-to-image models.
+CMMD offers a more reliable and robust alternative to FID for evaluating text-to-image models.
 
 # RECOMMENDATIONS:
 - Use CMMD instead of FID for evaluating text-to-image models' quality and fidelity.
-- Conduct human evaluations to ensure metrics align with human perception of quality.
-- Apply anti-alias resizing operations to avoid negative effects on metrics.
-- Visualize dataset features to test assumptions about data distributions.
-- Use statistical tests to validate assumptions about data distributions.
+- Employ large datasets like CLIP's 400 million images for training models.
+- Conduct human evaluations to align automated metrics with human perception.
+- Utilize Gaussian RBF kernel for calculating MMD distance in evaluations.
+- Perform side-by-side evaluations with independent raters for unbiased results.

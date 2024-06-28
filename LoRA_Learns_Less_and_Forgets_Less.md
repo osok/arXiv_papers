@@ -1,90 +1,93 @@
 # SUMMARY
-The text compares Laura and full fine-tuning for LLaMA models in code and math domains, analyzing performance, forgetting, and regularization.
+The text compares LoRA and full fine-tuning for LLaMA models in code and math tasks, analyzing performance, forgetting, and regularization.
 
 # IDEAS:
-- Laura falls short in code tasks compared to full fine-tuning but narrows the gap in math tasks.
-- Instruction fine-tuning involves question-answer datasets with tens to hundreds of millions of tokens.
-- Continued pre-training entails training on billions of unlabeled tokens.
-- Laura better preserves source domain performance than full fine-tuning.
-- Laura and full fine-tuning exhibit a similar trade-off curve between learning and forgetting.
-- Laura offers stronger regularization compared to traditional methods like dropout and weight decay.
+- LoRA falls short in code tasks compared to full fine-tuning but narrows the gap in math tasks.
+- LoRA better preserves source domain performance than full fine-tuning.
 - Full fine-tuning induces high-rank perturbations to the base model's weight matrices.
-- Laura's performance is highly influenced by learning rates and the selection of target modules.
-- Laura can save memory and enable efficient multi-tenant serving by sharing a base model across users.
-- Instruction fine-tuning leads to more significant improvements compared to continued pre-training in coding tasks.
-- Laura shows improvements in math tasks but remains less sample efficient compared to full fine-tuning.
-- Incremental fine-tuning leads to more forgetting than catastrophic parameter transfer in programming tasks.
-- Forgetting tends to increase with more training data, especially in programming tasks.
-- Laura forgets less than full fine-tuning, especially in programming tasks.
-- Laura helps maintain diversity in token generations during text generation tasks.
+- LoRA offers stronger regularization compared to traditional methods like dropout and weight decay.
+- LoRA maintains a diversity of solutions compared to the limited set produced by full fine-tuning.
+- LoRA's performance is highly influenced by learning rates and the selection of target modules.
+- LoRA can save memory and enable efficient multi-tenant serving by sharing a base model across users.
+- Instruction fine-tuning leads to more significant improvements compared to continued pre-training.
+- LoRA tends to underperform full fine-tuning, especially in programming tasks.
+- LoRA forgets less than full fine-tuning, especially in programming tasks.
+- LoRA achieves higher source domain performance for similar target domain performance in some cases.
+- LoRA proves to be a more effective regularizer leading to less learning and forgetting.
+- Low-rank training can approximate full fine-tuning in coding and math tasks.
 - Full fine-tuning does not necessarily learn low-rank perturbations.
 - The rank of perturbations increases with more training data and varies across module types and layers.
-- The best learning rates for Laura are 5e^-4 for code and 2e^-4 for math.
+- The choice of target modules is more crucial than the rank in LoRA.
 - Targeting all modules yielded better results compared to MLP and attention modules.
 - Selecting a relatively low rank such as r=16 while targeting all modules strikes a good balance.
-- Using Laura for improved fine-tuning IF instead of Captain is recommended.
 - Continual learning on a new domain may lead to a trade-off in performance on the original domain.
-- Replaying source domain data during continual learning can help mitigate forgetting.
-- The difference between Laura and full fine-tuning may diminish as the model size increases.
-- Mathematical datasets have a smaller domain shift containing a higher proportion of English.
+- Strategies like replaying source domain data during continual learning can help mitigate forgetting.
 
 # INSIGHTS:
-- Laura better preserves source domain performance than full fine-tuning, especially in programming tasks.
-- Instruction fine-tuning leads to more significant improvements compared to continued pre-training in coding tasks.
-- Laura offers stronger regularization compared to traditional methods like dropout and weight decay.
-- Full fine-tuning induces high-rank perturbations, while Laura assumes low-rank perturbations.
-- Laura's performance is highly influenced by learning rates and the selection of target modules.
-- Laura can save memory and enable efficient multi-tenant serving by sharing a base model across users.
-- Forgetting tends to increase with more training data, especially in programming tasks.
-- The best learning rates for Laura are 5e^-4 for code and 2e^-4 for math.
-- Targeting all modules yielded better results compared to MLP and attention modules.
-- Continual learning on a new domain may lead to a trade-off in performance on the original domain.
+- LoRA narrows the performance gap in math tasks with longer training but falls short in code tasks.
+- Full fine-tuning induces high-rank perturbations, while LoRA assumes low-rank perturbations.
+- LoRA offers stronger regularization and maintains solution diversity compared to full fine-tuning.
+- Learning rates and target module selection significantly impact LoRA's performance.
+- Instruction fine-tuning leads to more significant improvements than continued pre-training.
+- LoRA forgets less than full fine-tuning, especially in programming tasks.
+- Low-rank training can approximate full fine-tuning in coding and math tasks.
+- The choice of target modules is more crucial than the rank in LoRA.
+- Continual learning on a new domain may lead to a trade-off in original domain performance.
+- Replaying source domain data during continual learning can help mitigate forgetting.
 
 # QUOTES:
-- "Laura falls short in code tasks compared to full fine-tuning but narrows the gap in math tasks."
-- "Instruction fine-tuning involves question-answer datasets with tens to hundreds of millions of tokens."
-- "Continued pre-training entails training on billions of unlabeled tokens."
-- "Laura better preserves source domain performance than full fine-tuning."
-- "Laura and full fine-tuning exhibit a similar trade-off curve between learning and forgetting."
-- "Laura offers stronger regularization compared to traditional methods like dropout and weight decay."
+- "LoRA falls short in code tasks compared to full fine-tuning but narrows the gap in math tasks."
+- "LoRA better preserves source domain performance than full fine-tuning."
 - "Full fine-tuning induces high-rank perturbations to the base model's weight matrices."
-- "Laura's performance is highly influenced by learning rates and the selection of target modules."
-- "Laura can save memory and enable efficient multi-tenant serving by sharing a base model across users."
-- "Instruction fine-tuning leads to more significant improvements compared to continued pre-training in coding tasks."
-- "Laura shows improvements in math tasks but remains less sample efficient compared to full fine-tuning."
-- "Incremental fine-tuning leads to more forgetting than catastrophic parameter transfer in programming tasks."
-- "Forgetting tends to increase with more training data, especially in programming tasks."
-- "Laura forgets less than full fine-tuning, especially in programming tasks."
-- "Laura helps maintain diversity in token generations during text generation tasks."
+- "LoRA offers stronger regularization compared to traditional methods like dropout and weight decay."
+- "LoRA maintains a diversity of solutions compared to the limited set produced by full fine-tuning."
+- "LoRA's performance is highly influenced by learning rates and the selection of target modules."
+- "LoRA can save memory and enable efficient multi-tenant serving by sharing a base model across users."
+- "Instruction fine-tuning leads to more significant improvements compared to continued pre-training."
+- "LoRA tends to underperform full fine-tuning, especially in programming tasks."
+- "LoRA forgets less than full fine-tuning, especially in programming tasks."
+- "LoRA achieves higher source domain performance for similar target domain performance in some cases."
+- "LoRA proves to be a more effective regularizer leading to less learning and forgetting."
+- "Low-rank training can approximate full fine-tuning in coding and math tasks."
 - "Full fine-tuning does not necessarily learn low-rank perturbations."
 - "The rank of perturbations increases with more training data and varies across module types and layers."
-- "The best learning rates for Laura are 5e^-4 for code and 2e^-4 for math."
+- "The choice of target modules is more crucial than the rank in LoRA."
 - "Targeting all modules yielded better results compared to MLP and attention modules."
 - "Selecting a relatively low rank such as r=16 while targeting all modules strikes a good balance."
+- "Continual learning on a new domain may lead to a trade-off in performance on the original domain."
+- "Strategies like replaying source domain data during continual learning can help mitigate forgetting."
 
 # HABITS:
-- Conduct thorough learning rate sweeps for each method to optimize performance.
+- Conduct thorough learning rate sweeps for each method before training.
 - Target all modules rather than just MLP or attention modules for better results.
-- Use relatively low ranks like r=16 while targeting all modules for balanced performance.
+- Select a relatively low rank such as r=16 while targeting all modules for balance.
 - Replay source domain data during continual learning to mitigate forgetting.
-- Train models for at least four epochs for improved performance.
 
 # FACTS:
-- Instruction fine-tuning involves question-answer datasets with tens to hundreds of millions of tokens.
-- Continued pre-training entails training on billions of unlabeled tokens.
-- Laura better preserves source domain performance than full fine-tuning.
-- Full fine-tuning induces high-rank perturbations to the base model's weight matrices.
-- The best learning rates for Laura are 5e^-4 for code and 2e^-4 for math.
+- LoRA falls short in code tasks but narrows the gap in math tasks with longer training.
+- Full fine-tuning induces high-rank perturbations, while LoRA assumes low-rank perturbations.
+- Instruction fine-tuning leads to more significant improvements than continued pre-training.
+- LoRA forgets less than full fine-tuning, especially in programming tasks.
+- Low-rank training can approximate full fine-tuning in coding and math tasks.
 
 # REFERENCES:
-None mentioned.
+- LLaMA models
+- HumanEval benchmark
+- GSM 8K benchmark
+- Coding Captain dataset
+- StarCoder dataset
+- Python Math dataset
+- Open Web Math dataset
+- If Magicater dataset
+- Evel Instruct 110K dataset
+- Metamath QA dataset
 
 # ONE-SENTENCE TAKEAWAY
-Laura excels in preserving source domain performance but underperforms full fine-tuning, especially in code tasks.
+LoRA offers strong regularization and memory efficiency but underperforms full fine-tuning, especially in code tasks.
 
 # RECOMMENDATIONS:
-- Conduct thorough learning rate sweeps for each method to optimize performance effectively.
-- Target all modules rather than just MLP or attention modules for better results overall.
-- Use relatively low ranks like r=16 while targeting all modules for balanced performance.
-- Replay source domain data during continual learning to mitigate forgetting effectively.
-- Train models for at least four epochs for improved performance across various tasks.
+- Use LoRA for improved fine-tuning if instead of Captain for better results.
+- Identify the highest stable learning rate for optimal LoRA performance.
+- Target all modules rather than just MLP or attention modules for better results.
+- Select a relatively low rank such as r=16 while targeting all modules for balance.
+- Replay source domain data during continual learning to mitigate forgetting.

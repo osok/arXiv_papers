@@ -3,93 +3,90 @@ The text introduces Omnipred, a novel metric prediction framework using textual 
 
 # IDEAS:
 - Regression is crucial in fields like hyperparameter tuning and industrial engineering.
-- Omnipred uses textual representations for metric prediction, outperforming traditional regression models.
-- Text and token-based representations eliminate the need for tedious featurization.
+- Omnipred uses textual representations for metric prediction, outperforming traditional models.
+- Large language models (LLMs) can potentially be used for regression tasks.
 - Omnipred leverages transfer learning benefits across different input spaces and objectives.
-- Language models have shown success in tasks beyond natural language processing.
-- Exploring language models for regression tasks is crucial for experimental design and LLM research.
-- Traditional regression methods rely on fixed-length tensor representations.
+- Text and token-based representations eliminate the need for tedious featurization.
+- Traditional regression methods rely on fixed-length feature vectors.
+- Deep learning-based regressors offer flexibility regarding input length.
 - Token-based representations allow for variable length inputs and additional contextual metadata.
 - Language models can mimic human ratings through pairwise rankings or probabilistic scores.
 - Less attention has been paid to using language models for objective numeric-based data evaluation.
-- Omnipred achieves accurate metric predictions without the need for tedious featurization.
-- The model can be fine-tuned on small amounts of new evaluation data for unseen tasks.
-- Multitask regression framework enhances model learning by incorporating data from multiple tasks.
-- Standard T5 encoder-decoder model with 200 million parameters is used.
-- Inputs are represented in a key-value format to accommodate a wide range of input types.
+- Omnipred aims to develop a general-purpose predictor using a large heterogeneous offline dataset.
+- The model is trained using data from previous trials and incorporates data from multiple tasks.
+- Normalizing the difference between predictions and actual outcomes helps compare performance across tasks.
+- A multitask regression framework is used, receiving both input and task-level metadata.
+- Inputs are represented in a key-value format, accommodating a wide range of input types.
 - Outcomes are represented using custom tokens that capture numerical values consistently.
-- Temperature decoding technique is used to sample multiple possible outcomes.
-- Fine-tuning process allows the model to adapt to new tasks quickly.
-- Vizir tool is designed for optimizing without a clear model blackbox and fine-tuning parameters.
-- Parameters in Vizir can be of various types: double, integer, discrete, or categorical.
-- Task level information includes title, username, description, objective name, and optional details.
-- BBOB Benchmark introduces random shifts to the domain to create a variety of tasks.
+- Temperature decoding is used to sample multiple possible outcomes for generating predictions.
+- Fine-tuning allows the model to adapt to new tasks quickly.
+- Vizir is an open-source tool for blackbox and hyperparameter optimization.
+- Parameters in Vizir can be of various types, with conditional parameters based on parent values.
+- Task-level metadata includes the title, username, description, objective name, and optional details.
+- The bbob Benchmark introduces random shifts to the domain for controlled experiments.
 - Real-world data from Google Vizir includes incomplete data trajectories and a wide range of tasks.
-- Model's accuracy increases as it is exposed to more tasks during training.
+- The model's accuracy increases as it is exposed to more tasks during training.
 - Training on multiple tasks consistently yields better performance than training on a single task.
-- Fine-tuning pre-trained models on AutoML studies achieves similar accuracy levels to specific pre-training.
+- Fine-tuning pre-trained models on specific domains can enhance predictions on new tasks.
 
 # INSIGHTS:
-- Omnipred leverages textual representations to outperform traditional regression models.
-- Transfer learning benefits enhance Omnipred's performance across diverse input spaces and objectives.
-- Token-based representations offer flexibility in handling variable length inputs and contextual metadata.
-- Language models can predict numerical outcomes accurately using token-based representations.
-- Fine-tuning allows Omnipred to adapt quickly to new tasks with minimal data.
-- Multitask regression framework improves generalizability by learning from diverse tasks.
-- Key-value format representation accommodates a wide range of input types in Omnipred.
-- Temperature decoding helps estimate the distribution of outcomes learned by the model.
-- Vizir tool optimizes parameters without a clear model blackbox, enhancing versatility.
-- Training on multiple tasks consistently outperforms single-task training in diverse domains.
+- Omnipred uses textual representations to predict metrics, outperforming traditional regression models.
+- Large language models can potentially be employed for regression tasks beyond natural language processing.
+- Token-based representations allow for variable length inputs and additional contextual metadata.
+- Language models can mimic human ratings through pairwise rankings or probabilistic scores.
+- Fine-tuning allows the model to adapt quickly to new tasks, enhancing versatility and effectiveness.
+- Normalizing prediction differences helps compare performance across tasks with different outcome scales.
+- Multitask regression frameworks improve generalizability by learning from diverse tasks simultaneously.
+- Temperature decoding samples multiple possible outcomes, estimating the learned distribution of outcomes.
+- Vizir optimizes blackbox and hyperparameter parameters with task-level metadata and conditional parameters.
+- Training on multiple tasks consistently yields better performance than single-task training.
 
 # QUOTES:
 - "Regression is crucial in various fields like hyperparameter tuning and industrial engineering."
-- "Omnipred uses textual representations for metric prediction, outperforming traditional regression models."
+- "Omnipred uses textual representations for metric prediction, outperforming traditional models."
+- "Large language models can potentially be used for regression tasks."
 - "Text and token-based representations eliminate the need for tedious featurization."
-- "Language models have shown success in tasks beyond natural language processing."
-- "Exploring language models for regression tasks is crucial for experimental design and LLM research."
-- "Traditional regression methods rely on fixed-length tensor representations."
+- "Traditional regression methods rely on fixed-length feature vectors."
+- "Deep learning-based regressors offer flexibility regarding input length."
 - "Token-based representations allow for variable length inputs and additional contextual metadata."
 - "Language models can mimic human ratings through pairwise rankings or probabilistic scores."
 - "Less attention has been paid to using language models for objective numeric-based data evaluation."
-- "Omnipred achieves accurate metric predictions without the need for tedious featurization."
-- "The model can be fine-tuned on small amounts of new evaluation data for unseen tasks."
-- "Multitask regression framework enhances model learning by incorporating data from multiple tasks."
-- "Standard T5 encoder-decoder model with 200 million parameters is used."
-- "Inputs are represented in a key-value format to accommodate a wide range of input types."
+- "Omnipred aims to develop a general-purpose predictor using a large heterogeneous offline dataset."
+- "The model is trained using data from previous trials and incorporates data from multiple tasks."
+- "Normalizing the difference between predictions and actual outcomes helps compare performance across tasks."
+- "A multitask regression framework is used, receiving both input and task-level metadata."
+- "Inputs are represented in a key-value format, accommodating a wide range of input types."
 - "Outcomes are represented using custom tokens that capture numerical values consistently."
-- "Temperature decoding technique is used to sample multiple possible outcomes."
-- "Fine-tuning process allows the model to adapt to new tasks quickly."
-- "Vizir tool is designed for optimizing without a clear model blackbox and fine-tuning parameters."
-- "Parameters in Vizir can be of various types: double, integer, discrete, or categorical."
-- "Task level information includes title, username, description, objective name, and optional details."
+- "Temperature decoding is used to sample multiple possible outcomes for generating predictions."
+- "Fine-tuning allows the model to adapt to new tasks quickly."
+- "Vizir is an open-source tool for blackbox and hyperparameter optimization."
+- "Parameters in Vizir can be of various types, with conditional parameters based on parent values."
+- "Task-level metadata includes the title, username, description, objective name, and optional details."
 
 # HABITS:
-- Represent inputs in a key-value format to accommodate diverse input types effectively.
-- Use token-based representations to handle variable length inputs and contextual metadata.
-- Fine-tune models on small amounts of new evaluation data for unseen tasks.
-- Incorporate data from multiple tasks to enhance model learning and generalizability.
-- Utilize temperature decoding to sample multiple possible outcomes for better predictions.
+- Using textual representations for metric prediction eliminates tedious featurization processes.
+- Incorporating data from multiple tasks improves model generalizability and performance.
+- Normalizing prediction differences helps compare performance across diverse tasks effectively.
+- Representing inputs in a key-value format accommodates a wide range of input types seamlessly.
+- Using custom tokens to capture numerical values ensures consistent outcome representation.
 
 # FACTS:
 - Regression is crucial in fields like hyperparameter tuning and industrial engineering.
-- Omnipred uses textual representations for metric prediction, outperforming traditional regression models.
-- Language models have shown success in tasks beyond natural language processing.
-- Traditional regression methods rely on fixed-length tensor representations.
+- Omnipred uses textual representations for metric prediction, outperforming traditional models.
+- Large language models can potentially be used for regression tasks beyond natural language processing.
 - Token-based representations allow for variable length inputs and additional contextual metadata.
+- Language models can mimic human ratings through pairwise rankings or probabilistic scores.
 
 # REFERENCES:
-- Omnipred
-- Vizir
-- BBOB Benchmark
-- Google Vizir
-- T5 encoder-decoder model
+- Omnipred: A novel metric prediction framework using textual representations.
+- Vizir: An open-source tool for blackbox and hyperparameter optimization.
 
 # ONE-SENTENCE TAKEAWAY
 Omnipred leverages textual representations and transfer learning to outperform traditional regression models across diverse input spaces and objectives.
 
 # RECOMMENDATIONS:
-- Leverage textual representations for metric prediction to outperform traditional regression models effectively.
-- Utilize token-based representations to handle variable length inputs and contextual metadata efficiently.
-- Incorporate data from multiple tasks to enhance model learning and generalizability significantly.
-- Fine-tune models on small amounts of new evaluation data for unseen tasks quickly and effectively.
-- Use temperature decoding to sample multiple possible outcomes for better predictions.
+- Use textual representations for metric prediction to eliminate tedious featurization processes.
+- Leverage large language models for regression tasks beyond natural language processing applications.
+- Incorporate data from multiple tasks to improve model generalizability and performance.
+- Normalize prediction differences to compare performance across diverse tasks effectively.
+- Represent inputs in a key-value format to accommodate a wide range of input types seamlessly.

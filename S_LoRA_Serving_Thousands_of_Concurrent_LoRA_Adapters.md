@@ -1,79 +1,98 @@
 # SUMMARY
-The paper discusses efficient serving of fine-tuned large language models (LLMs) using a scalable system called SLaur, which optimizes memory and computation for high throughput.
+The paper discusses efficient serving of fine-tuned large language models (LLMs) using a scalable system called sLaur, which optimizes memory and computation for high throughput.
 
 # IDEAS:
-- Fine-tuning LLMs for specific tasks has proven effective but can be costly.
-- Low Rank Adaptation (LoRA) allows efficient fine-tuning by updating low-rank additive matrices.
-- LoRA achieves performance similar to full weight fine-tuning with fewer parameters.
-- Serving multiple fine-tuned models concurrently can reduce throughput and increase latency.
-- SLaur is a scalable serving system that manages memory and employs optimized CUDA kernels.
-- SLaur introduces a novel tensor parallelism strategy for efficient multi-GPU serving.
-- SLaur can serve thousands of LoRA adapters on a single GPU or across multiple GPUs.
-- LoRA keeps pre-trained base model weights the same and adds trainable low-rank matrices.
-- LoRA reduces the number of trainable parameters and memory consumption during inference.
-- Merging low-rank matrices with base model weights eliminates added overhead during inference.
+- Fine-tuning LLMs for specific tasks has proven to be effective.
+- Serving multiple fine-tuned variants concurrently can reduce throughput and increase latency.
+- sLaur efficiently manages memory and employs optimized Cuda kernels for batched inference.
+- sLaur introduces a novel tensor parallelism strategy to serve thousands of Laura adapters.
+- LLMs based on the Transformer architecture have billions to trillions of parameters.
+- Decoding in LLMs is more memory-intensive than computation-intensive due to the KV cache.
 - Orca schedules tasks at the token level to handle dynamic requests efficiently.
-- Page detention borrows concepts from virtual memory to manage dynamic KV cache tensors.
-- SLaur separates base model computation from individual LoRA computations for high throughput.
-- Unified paging supports dynamically loading LoRA adapters, reducing memory fragmentation.
-- Custom CUDA kernels minimize latency overhead in SLaur's batching strategy.
-- Adapter clustering limits active adapters in a batch to allocate more memory to KV cache.
-- Admission control in SLaur maintains performance when traffic exceeds system capacity.
-- Unified paging manages both KV cache and adapter weights in a unified memory pool.
-- Prefetching adapter weights reduces IO time for adapter swapping in SLaur.
-- Custom CUDA kernels handle non-contiguous memory layouts for LoRA computations.
-- Tensor parallelism strategies minimize communication costs in multi-GPU inference.
-- SLaur achieves higher throughput and lower latency compared to other systems.
-- SLaur's memory pool and custom kernels are effective as the number of adapters increases.
-- SLaur scales to a larger number of adapters without additional overhead.
-- Real-world tests show SLaur performs strongly with real-world workloads.
-- SLaur's early abort strategy outperforms other scheduling strategies in user satisfaction.
+- Page detention optimizes memory efficiency by managing dynamic KV cache tensors.
+- Tensor parallelism, sequence parallelism, and pipeline parallelism spread models across multiple GPUs.
+- sLaur's batching strategy separates base model computation from Laura adapters.
+- Unified paging supports dynamically loading Laura adapters, reducing memory fragmentation.
+- Custom Cuda kernels minimize latency overhead in sLaur.
+- Adapter clustering limits active adapters in a batch to boost efficiency.
+- Admission control in sLaur maintains performance when traffic exceeds system capacity.
+- Unified paging uses a unified memory pool to manage KV caches and adapter weights.
+- Prefetching adapter weights reduces IO time for adapter swapping.
+- Custom Cuda kernels handle non-contiguous memory in the unified memory pool.
+- Tensor parallelism strategies minimize communication costs and optimize memory usage.
+- sLaur achieves higher throughput and lower latency compared to its variants.
+- sLaur can serve 2,000 adapters simultaneously with minimal overhead.
+- Early abort strategy in sLaur optimizes user satisfaction and slow attainment.
+- Real-world tests show sLaur performs strongly with varying request rates and durations.
+- Superlinear scaling observed when increasing GPUs from 2 to 4 due to memory constraints alleviation.
+- Alternative design merging adapter weights declines in performance with more than two adapters.
+- Related work includes specialized serving systems for the Transformer architecture.
+- Parameter-efficient fine-tuning methods like Laura, prefix tuning, and prompt tuning are widely adopted.
 
 # INSIGHTS:
-- Efficient fine-tuning methods like LoRA can significantly reduce training costs.
-- Managing memory and computation effectively is crucial for serving multiple LLM variants.
-- Custom CUDA kernels and tensor parallelism strategies can optimize multi-GPU serving.
-- Unified paging and prefetching are key to reducing memory fragmentation and IO time.
-- Adapter clustering and admission control strategies balance throughput and latency.
+- Efficient memory management is crucial for serving multiple fine-tuned LLMs concurrently.
+- Custom Cuda kernels and tensor parallelism strategies significantly enhance throughput and reduce latency.
+- Dynamic request handling at the token level increases throughput in online settings.
+- Unified paging effectively reduces memory fragmentation and balances dynamic KV caches and adapter weights.
+- Prefetching adapter weights minimizes IO time, optimizing system efficiency.
+- Adapter clustering boosts efficiency but may impact latency and fairness among adapters.
+- Early abort strategy ensures better performance under high traffic conditions.
+- Superlinear scaling is achievable by alleviating memory constraints with additional GPUs.
+- Parameter-efficient fine-tuning methods can be applied to various Transformer-based architectures.
 
 # QUOTES:
-- "LoRA achieves performance similar to full weight fine-tuning with fewer parameters."
-- "SLaur can serve thousands of LoRA adapters on a single GPU or across multiple GPUs."
-- "Unified paging supports dynamically loading LoRA adapters, reducing memory fragmentation."
-- "Custom CUDA kernels handle non-contiguous memory layouts for LoRA computations."
-- "SLaur achieves higher throughput and lower latency compared to other systems."
-- "SLaur scales to a larger number of adapters without additional overhead."
-- "Real-world tests show SLaur performs strongly with real-world workloads."
-- "SLaur's early abort strategy outperforms other scheduling strategies in user satisfaction."
+- "Fine-tuning these models for specific tasks has proven to be effective."
+- "Serving multiple fine-tuned variants of a base LLM concurrently can lead to reduced serving throughput."
+- "sLaur introduces a novel tensor parallelism strategy to serve thousands of Laura adapters."
+- "Decoding in LLMs is more memory-intensive than computation-intensive due to the KV cache."
+- "Orca schedules tasks at the token level to handle dynamic requests efficiently."
+- "Page detention optimizes memory efficiency by managing dynamic KV cache tensors."
+- "Unified paging supports dynamically loading Laura adapters, reducing memory fragmentation."
+- "Custom Cuda kernels minimize latency overhead in sLaur."
+- "Adapter clustering limits active adapters in a batch to boost efficiency."
+- "Admission control in sLaur maintains performance when traffic exceeds system capacity."
+- "Prefetching adapter weights reduces IO time for adapter swapping."
+- "Tensor parallelism strategies minimize communication costs and optimize memory usage."
+- "sLaur achieves higher throughput and lower latency compared to its variants."
+- "sLaur can serve 2,000 adapters simultaneously with minimal overhead."
+- "Early abort strategy in sLaur optimizes user satisfaction and slow attainment."
+- "Real-world tests show sLaur performs strongly with varying request rates and durations."
+- "Superlinear scaling observed when increasing GPUs from 2 to 4 due to memory constraints alleviation."
+- "Alternative design merging adapter weights declines in performance with more than two adapters."
+- "Parameter-efficient fine-tuning methods like Laura, prefix tuning, and prompt tuning are widely adopted."
 
 # HABITS:
-- Efficiently manage memory and computation for high throughput in serving systems.
-- Use custom CUDA kernels to handle non-contiguous memory layouts effectively.
-- Implement tensor parallelism strategies to minimize communication costs in multi-GPU inference.
-- Employ unified paging to manage both KV cache and adapter weights in a unified memory pool.
-- Prefetch adapter weights to reduce IO time for adapter swapping.
+- Efficiently manage memory to handle multiple fine-tuned LLMs concurrently.
+- Employ custom Cuda kernels and tensor parallelism strategies for enhanced throughput.
+- Handle dynamic requests at the token level for increased throughput in online settings.
+- Use unified paging to reduce memory fragmentation and balance dynamic KV caches and adapter weights.
+- Prefetch adapter weights to minimize IO time and optimize system efficiency.
+- Limit active adapters in a batch to boost efficiency while considering latency impacts.
+- Implement early abort strategies to ensure better performance under high traffic conditions.
 
 # FACTS:
-- Fine-tuning LLMs for specific tasks has proven effective but can be costly.
-- Low Rank Adaptation (LoRA) allows efficient fine-tuning by updating low-rank additive matrices.
-- Serving multiple fine-tuned models concurrently can reduce throughput and increase latency.
-- SLaur introduces a novel tensor parallelism strategy for efficient multi-GPU serving.
+- Fine-tuning LLMs for specific tasks has proven effective.
+- Serving multiple fine-tuned variants concurrently can reduce throughput and increase latency.
+- Decoding in LLMs is more memory-intensive than computation-intensive due to the KV cache.
 - Orca schedules tasks at the token level to handle dynamic requests efficiently.
+- Page detention optimizes memory efficiency by managing dynamic KV cache tensors.
+- Tensor parallelism, sequence parallelism, and pipeline parallelism spread models across multiple GPUs.
+- Unified paging supports dynamically loading Laura adapters, reducing memory fragmentation.
+- Custom Cuda kernels minimize latency overhead in sLaur.
+- Adapter clustering limits active adapters in a batch to boost efficiency.
+- Admission control in sLaur maintains performance when traffic exceeds system capacity.
 
 # REFERENCES:
-- Llama model series
-- GPT-3
-- Hugging Face PFT
-- VM packed
-- Orca
-- Megatron LM
+None mentioned explicitly.
 
 # ONE-SENTENCE TAKEAWAY
-Efficiently managing memory and computation is crucial for high-throughput serving of multiple fine-tuned large language models.
+Efficient memory management and custom Cuda kernels significantly enhance throughput and reduce latency in serving multiple fine-tuned large language models.
 
 # RECOMMENDATIONS:
-- Use Low Rank Adaptation (LoRA) for efficient fine-tuning of large language models.
-- Implement custom CUDA kernels to handle non-contiguous memory layouts effectively.
-- Employ tensor parallelism strategies to minimize communication costs in multi-GPU inference.
-- Use unified paging to manage both KV cache and adapter weights in a unified memory pool.
-- Prefetch adapter weights to reduce IO time for adapter swapping.
+- Efficiently manage memory to handle multiple fine-tuned LLMs concurrently.
+- Employ custom Cuda kernels and tensor parallelism strategies for enhanced throughput.
+- Handle dynamic requests at the token level for increased throughput in online settings.
+- Use unified paging to reduce memory fragmentation and balance dynamic KV caches and adapter weights.
+- Prefetch adapter weights to minimize IO time and optimize system efficiency.
+- Limit active adapters in a batch to boost efficiency while considering latency impacts.
+- Implement early abort strategies to ensure better performance under high traffic conditions.

@@ -1,5 +1,5 @@
 # SUMMARY
-The text discusses the Transformer architecture's impact on deep learning, particularly in NLP and vision domains, and introduces the novel Transformer FAM architecture to handle long context inputs efficiently.
+The text discusses the Transformer architecture's impact on deep learning, particularly in NLP and vision domains. It introduces Transformer FAM, a novel architecture incorporating feedback loops to enhance working memory and efficiently process long sequences.
 
 # IDEAS:
 - Transformer architecture has significantly impacted deep learning across various fields by improving performance and scalability.
@@ -18,25 +18,25 @@ The text discusses the Transformer architecture's impact on deep learning, parti
 - Fine-tuning Transformer FAM with LoRA improves performance on long context tasks across different scales of LLMs.
 - Block sliding window attention (BSWA) caches information on a block-by-block basis without masking past keys and values.
 - BSWA has two key parameters: block size and memory segment, determining tokens per block and past blocks to cache.
-- Transformer FAM integrates feedback activations into each block of BSWA for richer representations and dynamic propagation.
-- FAM query compresses the current block based on previous global contextual information, optimizing utilization.
-- Transformer FAM maintains memory efficiency and training speed similar to BSWA despite additional considerations.
+- Transformer FAM integrates feedback activations into each block, enhancing working memory.
+- FAM optimizes global contextual information utilization throughout the model.
+- Transformer FAM maintains memory efficiency and training speed similar to BSWA.
 - Ideal data for training Transformer FAM includes long documents with continuous context like textbooks or novels.
 - The curse of IID challenges suitable training infrastructure or data for memory training.
 - Transformer FAM outperformed BSWA on various long context tasks, showcasing its ability to compress and retain crucial contextual information.
-- Performance on tasks saturated when FAM length reached 64, indicating limited space is more effective for compressing information.
+- Using FAM for compressed contextual representation alongside BSWA memory segments enhances LLM performance.
 
 # INSIGHTS:
 - Attention mechanisms are crucial for extracting meaningful information from data across various modalities.
 - Transformer FAM's feedback loop enables efficient processing of infinitely long sequences without new weights.
 - Neuroscience research suggests attention plays a crucial role in both multimodal fusion and working memory.
-- Sliding window attention addresses long context modeling but has limitations in capturing beyond certain window sizes.
-- Sparse attention and linear approximated attention may not perform well at the scale of models like GPT-3.
+- Sliding window attention addresses long context modeling but has limitations in capturing information beyond certain windows.
+- Sparse attention and linear approximated attention offer solutions but may not scale well for large models.
 - Block sliding window attention (BSWA) optimizes memory usage by caching information on a block-by-block basis.
-- Feedback activations in Transformer FAM lead to richer representations and dynamic propagation of global contextual information.
-- Ideal training data for Transformer FAM includes long documents with continuous context to fine-tune LLMs effectively.
-- The curse of IID poses challenges for suitable training infrastructure or data for memory training.
-- Transformer FAM outperforms BSWA on long context tasks, demonstrating its ability to compress and retain crucial contextual information.
+- Feedback activations in Transformer FAM enhance working memory by integrating global contextual information.
+- Ideal training data for Transformer FAM includes long continuous documents to fine-tune language models effectively.
+- The curse of IID presents challenges in finding suitable training infrastructure or data for memory training.
+- Transformer FAM's ability to compress and retain crucial contextual information improves performance on long context tasks.
 
 # QUOTES:
 - "Transformer architecture has significantly impacted deep learning across various fields by improving performance and scalability."
@@ -55,23 +55,23 @@ The text discusses the Transformer architecture's impact on deep learning, parti
 - "Fine-tuning Transformer FAM with LoRA improves performance on long context tasks across different scales of LLMs."
 - "Block sliding window attention (BSWA) caches information on a block-by-block basis without masking past keys and values."
 - "BSWA has two key parameters: block size and memory segment, determining tokens per block and past blocks to cache."
-- "Transformer FAM integrates feedback activations into each block of BSWA for richer representations and dynamic propagation."
-- "FAM query compresses the current block based on previous global contextual information, optimizing utilization."
-- "Transformer FAM maintains memory efficiency and training speed similar to BSWA despite additional considerations."
+- "Transformer FAM integrates feedback activations into each block, enhancing working memory."
+- "FAM optimizes global contextual information utilization throughout the model."
+- "Transformer FAM maintains memory efficiency and training speed similar to BSWA."
 - "Ideal data for training Transformer FAM includes long documents with continuous context like textbooks or novels."
 
 # HABITS:
-- Continuously fine-tune language models using long documents with continuous context like textbooks or novels.
-- Use feedback loops within Transformer blocks to naturally introduce working memory.
-- Optimize memory usage by caching information on a block-by-block basis during inference.
-- Maintain constant memory footprint during inference by using sliding window attention techniques.
-- Focus on generating correct answers by assigning weights to tokens during training.
+- Continuously fine-tuning models with long documents to improve performance on long context tasks.
+- Utilizing feedback loops within model architectures to enhance working memory capabilities.
+- Reusing pre-trained checkpoints to maintain efficiency while introducing new architectural changes.
+- Incorporating sparse attention techniques to handle long context problems effectively.
+- Leveraging neuroscience insights to inform model design for better multisensory integration.
 
 # FACTS:
 - Transformers have replaced LSTM in NLP tasks and CNN in vision tasks with models like Vision Transformer (ViT).
 - Attention mechanisms are crucial for extracting meaningful information from data across various modalities.
-- Sliding window attention handles infinitely long sequences but has limitations in capturing beyond certain window sizes.
-- Sparse attention and linear approximated attention may not perform well at the scale of models like GPT-3.
+- Sliding window attention handles infinitely long sequences but has limitations in capturing information beyond certain windows.
+- Sparse attention and linear approximated attention offer solutions but may not scale well for large models.
 - Block sliding window attention (BSWA) optimizes memory usage by caching information on a block-by-block basis.
 
 # REFERENCES:
@@ -84,10 +84,11 @@ The text discusses the Transformer architecture's impact on deep learning, parti
 - Gemini
 
 # ONE-SENTENCE TAKEAWAY
-Transformer FAM's feedback loop enables efficient processing of infinitely long sequences without new weights.
+Transformer FAM's feedback loop enhances working memory, enabling efficient processing of infinitely long sequences without new weights.
 
 # RECOMMENDATIONS:
-- Use feedback loops within Transformer blocks to naturally introduce working memory efficiently.
-- Optimize memory usage by caching information on a block-by-block basis during inference.
-- Maintain constant memory footprint during inference by using sliding window attention techniques.
-- Focus on generating correct answers by assigning weights to tokens during training.
+- Continuously fine-tune models with long documents to improve performance on long context tasks.
+- Utilize feedback loops within model architectures to enhance working memory capabilities.
+- Reuse pre-trained checkpoints to maintain efficiency while introducing new architectural changes.
+- Incorporate sparse attention techniques to handle long context problems effectively.
+- Leverage neuroscience insights to inform model design for better multisensory integration.

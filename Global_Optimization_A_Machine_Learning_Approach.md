@@ -1,98 +1,78 @@
 # SUMMARY
-The text discusses global optimization methods, focusing on the OOCAN framework, which combines machine learning with mixed integer optimization to solve complex problems. Enhancements include adaptive sampling, robust optimization, and various ML models.
+The text discusses global optimization methods, focusing on the OOCAN framework, which combines machine learning with mixed integer optimization to solve complex problems. Enhancements include adaptive sampling, robust optimization, and various ML models to improve solution quality and computation time.
 
 # IDEAS:
-- Global optimizers solve problems with objective functions, inequality, and equality constraints.
-- Constraints may lack desirable properties like linearity or convexity.
-- Decision variables can be continuous or integer.
-- Strategies often approximate problems with more manageable forms.
-- Gradient-based methods, outer approximations, and mixed integer optimization are common.
-- CONO uses gradient-based approaches and bound projections for optimality.
-- Outer approximations simplify constraints with linear and nonlinear cuts.
-- BARON combines MIO with convex relaxations and outer approximations.
-- Antigon uses convex underestimators and branch-and-cut methods.
-- Gradient-based methods struggle with integer variables.
-- Relaxations and outer approximations are limited to specific non-linearities.
-- Branching methods face the curse of dimensionality.
-- Many global optimizers handle only a subset of mathematical primitives.
-- Real-world problems may have richer sets of primitives like trigonometric functions.
-- OOCAN combines machine learning with MIO for general and blackbox problems.
-- OOCAN samples constraints for feasibility and trains decision trees.
-- OOCAN uses MIO approximation and local search for solution improvement.
-- Enhancements include adaptive sampling, robust optimization, and constraint relaxations.
-- Machine learning aids in formulating and solving optimization problems.
-- Constraint learning involves embedding learned functions as constraints in MIO models.
-- OOCAN uses various ML models like SVMs, GBMs, and MLPs for constraint approximation.
+- Global optimization problems often lack desirable mathematical properties like linearity or convexity.
+- Existing approaches include gradient-based methods, outer approximations, and mixed integer optimization.
+- OOCAN framework combines machine learning with mixed integer optimization for general and blackbox problems.
+- OOCAN samples nonlinear constraints and trains decision trees to approximate feasibility.
+- Extensions to OOCAN include adaptive sampling, robust optimization, and various ML models.
+- Machine learning aids in formulating and solving complex optimization problems.
+- Constraint learning involves embedding learned functions as constraints in an optimization problem.
+- OOCAN uses decision trees, support vector machines, gradient boosted trees, and multi-layer perceptrons.
 - Adaptive sampling generates high-quality samples for better constraint approximations.
-- October sampling iteratively resamples areas where learners can't approximate well.
-- Relaxation variables and penalty parameters ensure feasible solutions in MIO approximations.
-- Robust optimization accounts for uncertainty in trained ML model parameters.
-- Hyperplane-based decision trees are used for constraint approximations.
-- Cross-validation selects the best ML model type for each constraint.
-- Hit-and-run algorithm generates samples within polyhedra for better approximations.
-- Relaxation techniques address infeasibility in MIO approximations.
-- Robust optimization handles uncertainty in data of an optimization problem.
+- Robust optimization accounts for uncertainty in machine learning model parameters.
+- OOCAN framework improves optimality gaps and solution times compared to traditional optimizers.
+- The algorithm separates linear and nonlinear constraints and identifies variable limits.
+- Sampling methods include boundary sampling, Latin hypercube sampling, and KNN quasi-Newton sampling.
+- Decision trees are trained on data sets to approximate feasibility space of nonlinear constraints.
+- MIO approximation is solved using commercial solvers like IBM CPLEX and Gurobi.
+- Solution improvement involves projected gradient descent steps for feasibility and optimality.
+- Enhanced sampling includes boundary sampling, Latin hypercube sampling, KNN quasi-Newton sampling, and October-based adaptive sampling.
+- Enhanced ML model training involves selecting the best model type for each constraint using cross-validation.
+- Robust optimization handles uncertainty in trained parameters of ML models.
+- Relaxation variables and penalty parameters ensure feasible solutions in MIO approximation.
 
 # INSIGHTS:
-- Global optimizers tackle complex problems by approximating them with simpler forms.
-- Machine learning enhances global optimization by aiding in constraint approximation.
-- Adaptive sampling improves the accuracy of constraint approximations in optimization problems.
-- Robust optimization accounts for uncertainty in machine learning model parameters.
+- Combining machine learning with mixed integer optimization addresses complex global optimization problems.
+- Adaptive sampling refines constraint approximations by focusing on difficult-to-approximate areas.
+- Robust optimization mitigates uncertainty in machine learning model parameters for better solutions.
+- Decision trees, SVMs, GBMs, and MLPs offer diverse strengths for constraint approximation.
+- Cross-validation ensures the best ML model is chosen for each constraint.
 - Relaxation techniques ensure feasible solutions even when constraints are hard to satisfy.
+- Projected gradient descent improves both feasibility and optimality of solutions.
+- OOCAN framework's flexibility makes it suitable for a wide range of optimization problems.
+- Enhanced sampling methods adapt to the landscape of the function being sampled.
+- Incorporating multiple ML models enhances the robustness of the optimization framework.
 
 # QUOTES:
-- "Global optimizers solve problems that involve an objective function, inequality constraints, and equality constraints."
-- "Constraints may not always have desirable mathematical properties like linearity or convexity."
-- "Decision variables could be either continuous or integer."
-- "Most strategies try to solve the problem by approximating it with more manageable optimization forms."
-- "Gradient-based methods, outer approximations, relaxations, and mixed integer optimization are common."
-- "The well-known nonlinear optimizer CONO uses a gradient-based approach."
-- "Outer approximations simplify the problem by approximating the constraints with linear and nonlinear cuts."
-- "BARON combines MIO with convex relaxations and outer approximations."
-- "Antigon uses convex underestimators in conjunction with a branch-and-cut method."
-- "Gradient-based approaches rely on good initial feasible solutions and struggle with integer variables."
-- "Relaxations and outer approximations are limited to specific types of nonlinearities."
-- "Branching methods are hampered by the curse of dimensionality due to their combinatorial nature."
-- "Many global optimizers only allow constraints that use a subset of all the mathematical primitives."
-- "Real-world problems may contain constraints with a much richer set of primitives."
-- "OOCAN combines machine learning with mixed integer optimization to solve general and blackbox global optimization problems."
-- "OOCAN samples the nonlinear constraints for feasibility and trains a hyperplane-based decision tree on those samples."
+- "Global optimization problems often involve objective functions and constraints that lack desirable mathematical properties."
+- "OOCAN framework combines machine learning with mixed integer optimization to solve general and blackbox global optimization problems."
+- "Machine learning has been instrumental in helping us tackle complex large-scale optimization problems."
+- "Constraint learning involves learning functions from data using MIO models."
 - "Adaptive sampling generates high-quality samples of the nonlinear constraints for more accurate constraint approximations."
 - "Robust optimization accounts for the uncertainty of the sample-dependent training of the machine learning models."
-- "Relaxation techniques ensure feasible solutions even when the original problem is feasible."
+- "We use boundary sampling, Latin hypercube sampling, KNN quasi-Newton sampling, and October-based adaptive sampling."
+- "We train hyperplane-based decision trees on the data sets to approximate the feasibility space of the nonlinear constraint."
+- "The goal of October sampling is to resample parts of the constraint that are hard to approximate."
+- "Relaxation variables and a penalty parameter ensure the MIO approximation always has a feasible solution."
 
 # HABITS:
-- Using gradient-based methods to find initial feasible solutions.
-- Employing outer approximations to simplify complex constraints.
-- Combining machine learning with mixed integer optimization for better problem-solving.
-- Utilizing adaptive sampling to improve constraint approximations.
-- Applying robust optimization to handle uncertainty in model parameters.
+- Using adaptive sampling to refine constraint approximations iteratively.
+- Employing cross-validation to select the best machine learning model for each constraint.
+- Incorporating robust optimization to handle uncertainty in trained model parameters.
+- Performing projected gradient descent steps to improve solution feasibility and optimality.
+- Utilizing multiple machine learning models like SVMs, GBMs, and MLPs for diverse strengths.
 
 # FACTS:
-- Global optimizers solve problems involving objective functions, inequality, and equality constraints.
-- Constraints may lack desirable properties like linearity or convexity.
-- Decision variables can be continuous or integer.
-- Gradient-based methods, outer approximations, and mixed integer optimization are common strategies.
-- CONO uses gradient-based approaches and bound projections for optimality.
-- BARON combines MIO with convex relaxations and outer approximations.
-- Antigon uses convex underestimators and branch-and-cut methods.
-- Many global optimizers handle only a subset of mathematical primitives.
+- Global optimization problems may have continuous or integer decision variables.
+- Existing approaches like gradient-based methods struggle with integer variables.
+- OOCAN framework can handle constraints with various mathematical primitives.
+- Machine learning aids in speeding up tree search and guiding branching in MIO problems.
+- Constraint learning has been used to create food baskets for the World Food Program.
 
 # REFERENCES:
-- CONO nonlinear optimizer
-- BARON commercial optimizer
-- Antigon solver
-- Mixed Integer Optimization (MIO)
-- Support Vector Machines (SVMs)
-- Gradient Boosting Machines (GBMs)
-- Multi-Layer Perceptrons (MLPs)
-  
+- IBM CPLEX
+- Gurobi
+- World Food Program
+- MINLP Library
+
 # ONE-SENTENCE TAKEAWAY
-Combining machine learning with mixed integer optimization enhances global optimization by improving constraint approximation and handling uncertainty.
+Combining machine learning with mixed integer optimization enhances global optimization by improving constraint approximations and handling uncertainty.
 
 # RECOMMENDATIONS:
-- Use gradient-based methods to find initial feasible solutions efficiently.
-- Employ outer approximations to simplify complex constraints in optimization problems.
-- Combine machine learning with mixed integer optimization for better problem-solving capabilities.
-- Utilize adaptive sampling to generate high-quality samples for accurate constraint approximations.
-- Apply robust optimization techniques to handle uncertainty in machine learning model parameters.
+- Use adaptive sampling to generate high-quality samples for better constraint approximations.
+- Employ cross-validation to select the best machine learning model for each constraint.
+- Incorporate robust optimization to handle uncertainty in trained model parameters.
+- Perform projected gradient descent steps to improve solution feasibility and optimality.
+- Utilize multiple machine learning models like SVMs, GBMs, and MLPs for diverse strengths.
